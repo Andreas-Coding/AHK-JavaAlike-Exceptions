@@ -21,7 +21,7 @@ SetWorkingDir, %A_ScriptDir%
 	*	toShortStr()
 	*	_extraToStr(extra)
 */
-class ExceptionsPlus2 {
+class ExceptionsPlus {
 
 	
 	/*
@@ -52,12 +52,11 @@ class ExceptionsPlus2 {
 		*	ExceptionsPlus		- New object of the class ExceptionsPlus
 	*/
 	__New(depth, additionalInfo := ""){
-		Try Throw, Exception("just retrieve a specific point in the callstack", -1 * (Abs(depth) + 1))
-		Catch, e {
-			this.What := e.What
-			this.Line := e.Line
-			this.File := e.File
-		}
+		e := Exception("just retrieve a specific point in the callstack", -1 * (Abs(depth) + 1))
+		this.What := e.What
+		this.Line := e.Line
+		this.File := e.File
+
 		this.Message := this.__Class
 		this.Extra := additionalInfo
 	}
@@ -122,20 +121,6 @@ class ExceptionsPlus2 {
 			result .= Format("{1:s}: {2:s}", index, (IsObject(element)) ? this._extraToStr(element) : element)
 		}
 		return, result . "}"
-	}
-
-
-}
-
-
-class ExampleException extends ExceptionsPlus{
-
-
-	static description := "This exception is an example how to implement your own derivertiv classes of ExceptionsPlus for your own error handling"
-
-
-	__New(depth, additionalInfo := ""){
-		base.__New(Abs(depth) + 1, additionalInfo)
 	}
 
 
