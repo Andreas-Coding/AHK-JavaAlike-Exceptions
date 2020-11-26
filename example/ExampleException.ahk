@@ -1,4 +1,4 @@
-#Include, ../ExceptionsPlus.ahk
+#Include, %A_LineFile%/../../ExceptionsPlus.ahk
 
 
 class ExampleException extends ExceptionsPlus{
