@@ -4,7 +4,7 @@ SetWorkingDir, %A_ScriptDir%
 
 
 /**
-	* Class: Throwable
+	* Class: ExceptionsPlus
 	*	This class is an attempt to implement Java alike Exception Objects
 	* Usage:
 	*	Callable - NO
@@ -21,7 +21,7 @@ SetWorkingDir, %A_ScriptDir%
 	*	toShortStr()
 	*	_extraToStr(extra)
 */
-class Throwable {
+class ExceptionsPlus2 {
 
 	
 	/*
@@ -44,12 +44,12 @@ class Throwable {
 
 	/*
 		* Method: __New(depth, additionalInfo := "")
-		*	constructor method for Throwable object
+		*	constructor method for ExceptionsPlus object
 		* Params:
 		*	depth			- number of steps to go back in the callstack
 		*	additionalInfo	- what additional info you want to return for debugging purpose
 		* Return:
-		*	Throwable		- New object of the class Throwable
+		*	ExceptionsPlus		- New object of the class ExceptionsPlus
 	*/
 	__New(depth, additionalInfo := ""){
 		Try Throw, Exception("just retrieve a specific point in the callstack", -1 * (Abs(depth) + 1))
@@ -128,10 +128,10 @@ class Throwable {
 }
 
 
-class ExampleException extends Throwable{
+class ExampleException extends ExceptionsPlus{
 
 
-	static description := "This exception is an example how to implement your own derivertiv classes of Throwable for your own error handling"
+	static description := "This exception is an example how to implement your own derivertiv classes of ExceptionsPlus for your own error handling"
 
 
 	__New(depth, additionalInfo := ""){
